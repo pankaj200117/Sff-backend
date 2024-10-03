@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /var/www/html/SFF-Backend
+cd /home/ubuntu/Sff-backend
 echo "This is a test-deployment content - Before Install"

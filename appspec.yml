@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/html/SFF-Backend
+    destination: /home/ubuntu/Sff-backend
     overwrite: true
 file_exists_behavior: OVERWRITE
 hooks:
