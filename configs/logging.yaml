@@ -1,0 +1,41 @@
+version: 1
+disable_existing_loggers: False
+
+filters:
+    relative_path:
+        (): src.utils.logging_setup.RelativePathFilter
+        relative_to: .
+
+formatters:
+    simple:
+        format: "%(asctime)s - %(name)s -  %(levelname)s - %(message)s"
+    detailed:
+        format: "%(asctime)s - %(pathname)s - %(levelname)s - %(funcName)s - %(message)s"
+
+handlers:
+    console:
+        class: logging.StreamHandler
+        level: INFO
+        formatter: simple
+        stream: ext://sys.stdout
+    file:
+        class: logging.FileHandler
+        level: INFO
+        formatter: detailed
+        filename: logs/app.log
+        filters: [relative_path]
+        mode: a
+
+root:
+    level: INFO
+    handlers: [console, file]
+
+loggers:
+    steps_info:
+        level: INFO
+        handlers: [ file ]
+        propagate: no
+    openai:
+        level: ERROR
+    httpx:
+        level: ERROR
