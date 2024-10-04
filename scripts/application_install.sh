@@ -6,9 +6,9 @@ cd /var/www/html/Sff-backend
 # Activate the virtual environment
 source venv/bin/activate
 
-# Start the Python API
+# Start the Python API using Uvicorn
 echo "Starting the Python API..."
-python -m src.api &
+uvicorn src.api:app --host 0.0.0.0 --port 5011 &
 
 # Create a tmux session for the Gradio app
 tmux new-session -d -s gradio_session
