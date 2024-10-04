@@ -1,18 +1,23 @@
 #!/bin/bash
-# This script runs before the installation phase
 
-# Update and upgrade the system packages
-sudo apt-get update -y
-sudo apt-get upgrade -y
+# Update package list and install necessary packages
+apt-get update -y
+apt-get install -y python3-pip python3-venv
 
-# Install dependencies like Python, Pip, or any others needed
-sudo apt-get install -y python3-pip
-sudo apt-get install -y tmux
+# Navigate to the application directory
+cd /var/www/html/Sff-backend
 
-# Optional: Install Conda if needed
-# wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
-# bash ~/miniconda.sh -b -p $HOME/miniconda
-# eval "$($HOME/miniconda/bin/conda shell.bash hook)"
+# Create a virtual environment if it doesn't exist
+if [ ! -d "venv" ]; then
+    python3 -m venv venv
+fi
 
-echo "Before Install phase is complete."
+# Activate the virtual environment
+source venv/bin/activate
+
+# Install required Python packages
+pip install -r requirements.txt
+
+# Ensure .env file permissions are set correctly
+chown www-data:www-data .env
 

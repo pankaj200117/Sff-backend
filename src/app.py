@@ -780,7 +780,7 @@ if __name__ == "__main__":
     os.makedirs(config.UPLOAD_AUDIO_DIR, exist_ok=True)
     os.makedirs(config.STORYBOARD_EXTRACTION_DIR, exist_ok=True)
     app.launch(
-        server_name='127.0.0.1',
+        server_name='0.0.0.0',
         server_port=config.GRADIO_PORT,
         root_path=config.GRADIO_ROOT_PATH,
         auth=("admin", os.getenv("GRADIO_PASSWORD"))
